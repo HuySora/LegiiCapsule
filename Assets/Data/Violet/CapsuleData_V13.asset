@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc92fb1459b5ca4ca87ed93c0bd6110, type: 3}
+  m_Name: CapsuleData_V13
+  m_EditorClassIdentifier: 
+  <CapsuleSprite>k__BackingField: {fileID: 21300000, guid: 6af7c5e3407f7a84bb915d914ea332d1, type: 3}
+  <PackData>k__BackingField: {fileID: 11400000, guid: 66eb65afa778c854f96e65dda8b6a0e4, type: 2}
