@@ -4,8 +4,10 @@ using UnityEngine;
 public class GachaScreen_CapsuleController : GachaScreen_MonoBehaviour {
     [field: Header("References")]
     [field: SerializeField] public GachaScreen_CoinDropArea CoinDropArea { get; private set; }
+    [field: SerializeField] public AudioSource CoinDropAudioSource { get; private set; }
     [field: SerializeField] public GachaScreen_KnobButton KnobButton { get; private set; }
     [field: SerializeField] public GachaScreen_Capsule Capsule { get; private set; }
+    [field: SerializeField] public AudioSource CapsuleDropDownAudioSource { get; private set; }
     [field: SerializeField] public RectTransform SpawnRectTransform { get; private set; }
     [field: SerializeField] public RectTransform StationaryRectTransform { get; private set; }
     [field: Header("Data")]
@@ -27,6 +29,7 @@ public class GachaScreen_CapsuleController : GachaScreen_MonoBehaviour {
     private void OnCoinDropped(GachaScreen_Coin coin) {
         m_Coin++;
         PocketController.ConsumeCoin(coin);
+        CoinDropAudioSource.Play();
     }
     private void OnKnobClicked(GachaScreen_KnobButton knob) {
         if (m_Coin <= 0) {
@@ -41,6 +44,7 @@ public class GachaScreen_CapsuleController : GachaScreen_MonoBehaviour {
         // Initialize capsule data
         Capsule.Initialize(GachaManager.GetRandomCapsuleData());
         // Tween
+        CapsuleDropDownAudioSource.Play();
         Capsule.RectTransform.rotation = Quaternion.Euler(0f, 0f, Random.Range(-360f, 360f));
         Vector3 newRotation = new Vector3(
             Capsule.RectTransform.localRotation.x,
