@@ -12,11 +12,14 @@ public class Scene_GachaScreen : Scene_Base {
     [field: SerializeField] public UnityEvent ExitButtonClickedEvent { get; private set; }
     [field: SerializeField] public Button CollectionButton { get; private set; }
     [field: SerializeField] public UnityEvent CollectionButtonClickedEvent { get; private set; }
+    [field: SerializeField] public Button BattleButton { get; private set; }
+    [field: SerializeField] public UnityEvent BattleButtonClickedEvent { get; private set; }
     private void Awake() {
         Instance = this;
     }
     private void Start() {
         ExitButton.onClick.AddListener(() => ExitButtonClickedEvent.Invoke());
         CollectionButton.onClick.AddListener(() => CollectionButtonClickedEvent.Invoke());
+        BattleButton.onClick.AddListener(() => BattleButtonClickedEvent.Invoke());
     }
 }
