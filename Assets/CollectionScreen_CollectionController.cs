@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class CollectionScreen_CollectionController : CollectionScreen_MonoBehavi
     [field: SerializeField] public Transform CollectedCardPanelTransform { get; private set; }
     [field: SerializeField] public Button LeftButton { get; private set; }
     [field: SerializeField] public Button RightButton { get; private set; }
+    [field: SerializeField] public TextMeshProUGUI CollectedCardCountText { get; private set; }
     [field: Header("Data")]
     [field: SerializeField] public CollectionScreen_CollectedCardPage CollectedCardPagePrefab { get; private set; }
     [field: Header("Runtime")]
@@ -74,6 +76,8 @@ public class CollectionScreen_CollectionController : CollectionScreen_MonoBehavi
                 CollectedCardPageList[i].gameObject.SetActive(ActivePageId == i);
             }
         });
+        // Update card count
+        CollectedCardCountText.text = CollectionManager.Instance.CollectedCardList.Count.ToString();
     }
     private void OnCardClicked(CollectionScreen_CollectedCardButton card) {
         CardViewImage.DOKill();
