@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class GachaScreen_PocketController : GachaScreen_MonoBehaviour {
@@ -6,10 +7,18 @@ public class GachaScreen_PocketController : GachaScreen_MonoBehaviour {
     [field: SerializeField] public GachaScreen_Coin Coin { get; private set; }
     [field: SerializeField] public RectTransform SpawnRectTransform { get; private set; }
     [field: SerializeField] public RectTransform StationaryRectTransform { get; private set; }
+    [field: SerializeField] public TextMeshProUGUI CoinCountText { get; private set; }
     [field: Header("Data")]
     [field: SerializeField] public float TweenToStationaryPositionTime { get; private set; } = 1f;
     private bool m_CoinSpawned;
+    private void Start() {
+        Coin.gameObject.SetActive(false);
+        Coin.ResetState();
+        Coin.RectTransform.DOAnchorPos(SpawnRectTransform.anchoredPosition, 0f);
+        m_CoinSpawned = false;
+    }
     private void Update() {
+        CoinCountText.text = EconomyManager.Coin.ToString();
         if (m_CoinSpawned) {
             return;
         }
