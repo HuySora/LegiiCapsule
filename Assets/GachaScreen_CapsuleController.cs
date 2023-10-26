@@ -5,6 +5,7 @@ public class GachaScreen_CapsuleController : GachaScreen_MonoBehaviour {
     [field: Header("References")]
     [field: SerializeField] public GachaScreen_CoinDropArea CoinDropArea { get; private set; }
     [field: SerializeField] public AudioSource CoinDropAudioSource { get; private set; }
+    [field: SerializeField] public Animator ContainedCapsulesController { get; private set; }
     [field: SerializeField] public GachaScreen_KnobButton KnobButton { get; private set; }
     [field: SerializeField] public GachaScreen_Capsule Capsule { get; private set; }
     [field: SerializeField] public AudioSource CapsuleDropDownAudioSource { get; private set; }
@@ -18,12 +19,14 @@ public class GachaScreen_CapsuleController : GachaScreen_MonoBehaviour {
     }
     private void OnEnable() {
         CoinDropArea.OnCoinDrop.AddListener(OnCoinDropped);
-        KnobButton.OnKnobClicked.AddListener(OnKnobClicked);
+        KnobButton.KnobClicked.AddListener(OnKnobClicked);
+        KnobButton.KnobFinished.AddListener(OnKnobFinished);
         Capsule.OnCapsuleClicked.AddListener(OnCapsuleClicked);
     }
     private void OnDisable() {
         CoinDropArea.OnCoinDrop.RemoveListener(OnCoinDropped);
-        KnobButton.OnKnobClicked.RemoveListener(OnKnobClicked);
+        KnobButton.KnobClicked.RemoveListener(OnKnobClicked);
+        KnobButton.KnobFinished.RemoveListener(OnKnobFinished);
         Capsule.OnCapsuleClicked.RemoveListener(OnCapsuleClicked);
     }
     private void OnCoinDropped(GachaScreen_Coin coin) {
@@ -39,6 +42,17 @@ public class GachaScreen_CapsuleController : GachaScreen_MonoBehaviour {
         if (Capsule.gameObject.activeSelf) {
             return;
         }
+        ContainedCapsulesController.SetBool("IsRolling", true);
+    }
+    private void OnKnobFinished(GachaScreen_KnobButton knob) {
+        if (m_Coin <= 0) {
+            Debug.Log("GachaScreen_CapsuleController: m_Coin <= 0");
+            return;
+        }
+        if (Capsule.gameObject.activeSelf) {
+            return;
+        }
+        ContainedCapsulesController.SetBool("IsRolling", false);
         m_Coin--;
         Capsule.gameObject.SetActive(true);
         // Initialize capsule data

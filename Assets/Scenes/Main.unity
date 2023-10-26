@@ -572,6 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CoinDropArea>k__BackingField: {fileID: 1625681471}
   <CoinDropAudioSource>k__BackingField: {fileID: 1521578527}
+  <ContainedCapsulesController>k__BackingField: {fileID: 1550369144}
   <KnobButton>k__BackingField: {fileID: 1589927447}
   <Capsule>k__BackingField: {fileID: 1768544777}
   <CapsuleDropDownAudioSource>k__BackingField: {fileID: 113307417}
@@ -1374,7 +1375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &257253286
 Transform:
   m_ObjectHideFlags: 0
@@ -5254,6 +5255,7 @@ GameObject:
   - component: {fileID: 1550369141}
   - component: {fileID: 1550369143}
   - component: {fileID: 1550369142}
+  - component: {fileID: 1550369144}
   m_Layer: 0
   m_Name: ContainedCapsules
   m_TagString: Untagged
@@ -5319,6 +5321,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550369140}
   m_CullTransparentMesh: 1
+--- !u!95 &1550369144
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550369140}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 548611a9ffb3fe04ea48da07aed5ff57, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1557940529
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,19 +5461,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1589927445}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 31308412}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1589927445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5501,7 +5512,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e98de6e7151c2409cd0b3d83ccb9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <OnKnobClicked>k__BackingField:
+  <KnobClicked>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 31308412}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <KnobFinished>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
   <TweenRotateTime>k__BackingField: 1.5
@@ -6742,7 +6768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1843196056
 Transform:
   m_ObjectHideFlags: 0
