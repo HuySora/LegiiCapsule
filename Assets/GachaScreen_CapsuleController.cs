@@ -30,6 +30,9 @@ public class GachaScreen_CapsuleController : GachaScreen_MonoBehaviour {
         Capsule.OnCapsuleClicked.RemoveListener(OnCapsuleClicked);
     }
     private void OnCoinDropped(GachaScreen_Coin coin) {
+        if (m_Coin > 0) {
+            return;
+        }
         m_Coin++;
         PocketController.ConsumeCoin(coin);
         CoinDropAudioSource.Play();
